@@ -44,8 +44,8 @@ def log_upstream(stats, param, key):
 		'DS:US-3:GAUGE:300:U:U',
 		'DS:US-4:GAUGE:300:U:U']
 	upstream_archives = [
-		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
-		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
+		'RRA:AVERAGE:0.5:1:20160', # 7 days worth of full res, every 30 seconds
+		'RRA:AVERAGE:0.5:10:80640', # 28 days of every 5 minutes
 	]
 	if not os.path.exists('rrds/upstream_%s.rrd' % param):
 		rrdtool.create('rrds/upstream_%s.rrd' % param,'--step','30',upstream_sources, upstream_archives)
@@ -65,8 +65,8 @@ def log_upstream_counter(stats, param, key):
 		'DS:US-3:COUNTER:300:U:U',
 		'DS:US-4:COUNTER:300:U:U']
 	upstream_archives = [
-		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
-		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
+		'RRA:AVERAGE:0.5:1:20160', # 7 days worth of full res, every 30 seconds
+		'RRA:AVERAGE:0.5:10:80640', # 28 days of every 5 minutes
 	]
 	if not os.path.exists('rrds/upstream_%s.rrd' % param):
 		rrdtool.create('rrds/upstream_%s.rrd' % param,'--step','30',upstream_sources, upstream_archives)
@@ -90,8 +90,8 @@ def log_downstream(stats, param, key):
 		'DS:DS-7:GAUGE:300:U:U',
 		'DS:DS-8:GAUGE:300:U:U']
 	downstream_archives = [
-		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
-		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
+		'RRA:AVERAGE:0.5:1:20160', # 7 days worth of full res, every 30 seconds
+		'RRA:AVERAGE:0.5:10:80640', # 28 days of every 5 minutes
 	]
 
 	if not os.path.exists('rrds/downstream_%s.rrd' % param):
@@ -120,8 +120,8 @@ def log_downstream_counter(stats, param, key):
 		'DS:DS-7:COUNTER:300:U:U',
 		'DS:DS-8:COUNTER:300:U:U']
 	downstream_archives = [
-		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
-		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
+		'RRA:AVERAGE:0.5:1:20160', # 7 days worth of full res, every 30 seconds
+		'RRA:AVERAGE:0.5:10:80640', # 28 days of every 5 minutes
 	]
 
 	if not os.path.exists('rrds/downstream_%s.rrd' % param):
