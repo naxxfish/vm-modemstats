@@ -108,8 +108,9 @@ def log_downstream(stats, param, key):
 		str(stats['downstream']['DS-6'][key]),
 		str(stats['downstream']['DS-7'][key]),
 		str(stats['downstream']['DS-8'][key]))
-	rrdtool.update('rrds/downstream_%s.rrd' % param, downstream_update)
 	print "Downstream: [%s] %s" % (key, downstream_update)
+	rrdtool.update('rrds/downstream_%s.rrd' % param, downstream_update)
+
 
 def log_downstream_counter(stats, param, key):
 	downstream_sources = [
@@ -130,16 +131,17 @@ def log_downstream_counter(stats, param, key):
 	if not os.path.exists('rrds/downstream_%s.rrd' % param):
 		rrdtool.create('rrds/downstream_%s.rrd' % param,'--step','30',downstream_sources, downstream_archives)
 	downstream_update = 	"N:%s:%s:%s:%s:%s:%s:%s:%s" %  (
-		str(stats['downstream']['DS-1'][key]) ,
-		str(stats['downstream']['DS-2'][key]),
-		str(stats['downstream']['DS-3'][key]),
-		str(stats['downstream']['DS-4'][key]),
-		str(stats['downstream']['DS-5'][key]),
-		str(stats['downstream']['DS-6'][key]),
-		str(stats['downstream']['DS-7'][key]),
-		str(stats['downstream']['DS-8'][key]))
-	rrdtool.update('rrds/downstream_%s.rrd' % param, downstream_update)
+		str(abs(int(stats['downstream']['DS-1'][key]))) ,
+		str(abs(int(stats['downstream']['DS-2'][key]))),
+		str(abs(int(stats['downstream']['DS-3'][key]))),
+		str(abs(int(stats['downstream']['DS-4'][key]))),
+		str(abs(int(stats['downstream']['DS-5'][key]))),
+		str(abs(int(stats['downstream']['DS-6'][key]))),
+		str(abs(int(stats['downstream']['DS-7'][key]))),
+		str(abs(int(stats['downstream']['DS-8'][key]))))
 	print "Downstream{counter}: [%s] %s" % (key, downstream_update)
+	rrdtool.update('rrds/downstream_%s.rrd' % param, downstream_update)
+
 
 
 if __name__=='__main__':

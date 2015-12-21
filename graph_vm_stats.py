@@ -48,13 +48,7 @@ if __name__ == '__main__':
 	graph_stat('downstream', 'prerserr', 'end-1h', 'Pre-RS Errors', 'errors/sec', extraopts=['--logarithmic'])
 	graph_stat('downstream', 'postrserr', 'end-1h', 'Post-RS Errors', 'errors/sec', extraopts=['--logarithmic'])
 
-	graph_stat('downstream', 'power', 'end-24h', 'Power', 'dBmV', extraopts = [
-		'DEF:temp=../Powerglove/powerglove.rrd:temp:AVERAGE',
-		'CDEF:scaled_temp=temp,2.5,+,0.5,*',
-		'LINE3:scaled_temp#00d8ff:Temperature:dashes=on',
-		'--right-axis-label', 'Temperature (C)',
-		'--right-axis', '2:-2.5'
-	])
+	graph_stat('downstream', 'power', 'end-24h', 'Power', 'dBmV')
 	graph_stat('upstream', 'power', 'end-24h', 'Power', 'dBmV')
 	graph_stat('downstream', 'snr', 'end-24h', 'Signal to Noise', 'dB')
 	graph_stat('downstream', 'freq', 'end-24h', 'Frequency', 'Hz')
