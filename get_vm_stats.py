@@ -46,7 +46,6 @@ def log_upstream(stats, param, key):
 	upstream_archives = [
 		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
 		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
-		'RRA:AVERAGE:0.5:120:8760' # 1 year's worth of every hour
 	]
 	if not os.path.exists('rrds/upstream_%s.rrd' % param):
 		rrdtool.create('rrds/upstream_%s.rrd' % param,'--step','30',upstream_sources, upstream_archives)
@@ -68,7 +67,6 @@ def log_upstream_counter(stats, param, key):
 	upstream_archives = [
 		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
 		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
-		'RRA:AVERAGE:0.5:120:8760' # 1 year's worth of every hour
 	]
 	if not os.path.exists('rrds/upstream_%s.rrd' % param):
 		rrdtool.create('rrds/upstream_%s.rrd' % param,'--step','30',upstream_sources, upstream_archives)
@@ -94,7 +92,6 @@ def log_downstream(stats, param, key):
 	downstream_archives = [
 		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
 		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
-		'RRA:AVERAGE:0.5:120:8760' # 1 year's worth of every hour
 	]
 
 	if not os.path.exists('rrds/downstream_%s.rrd' % param):
@@ -125,7 +122,6 @@ def log_downstream_counter(stats, param, key):
 	downstream_archives = [
 		'RRA:AVERAGE:0.5:1:604800', # 7 days worth of full res, every 30 seconds
 		'RRA:AVERAGE:0.5:10:2419200', # 28 days of every 5 minutes
-		'RRA:AVERAGE:0.5:120:8760' # 1 year's worth of every hour
 	]
 
 	if not os.path.exists('rrds/downstream_%s.rrd' % param):
